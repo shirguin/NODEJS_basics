@@ -1,11 +1,11 @@
 {
   "name": "fill-random-array",
   "version": "1.0.0",
-  "description": "",
+  "description": "lib for create and fill array",
   "main": "fill-random-array.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Alex Shirgin",
   "license": "ISC"
 }
