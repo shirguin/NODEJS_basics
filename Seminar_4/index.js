@@ -6,14 +6,14 @@ const { idScheme, userScheme } = require("./validation/scheme");
 
 const app = express();
 
-//let users = [];
-let uniqueID = 0;
+let uniqueID;
 
 const pathToDataFile = path.join(__dirname, "data.json");
 
 const getUsers = () => {
   const users = JSON.parse(fs.readFileSync(pathToDataFile, "utf-8"));
   if (users) {
+    uniqueID = users[users.length - 1].id;
     return users;
   } else {
     return [];
@@ -54,7 +54,7 @@ app.get("/users/:id", checkParams(idScheme), (req, res) => {
  */
 app.post("/users", checkBody(userScheme), (req, res) => {
   const users = getUsers();
-  uniqueID++;
+  uniqueID += 1;
 
   users.push({ id: uniqueID, ...req.body });
   saveUsers(users);
